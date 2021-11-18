@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.axelor.apps.account.db.Invoice;
+import com.axelor.apps.account.db.repo.InvoiceLineRepository;
 import com.axelor.apps.account.db.repo.InvoiceRepository;
 import com.axelor.apps.account.service.app.AppAccountService;
 import com.axelor.apps.account.service.config.AccountConfigService;
@@ -17,6 +18,7 @@ import com.axelor.apps.account.service.move.MoveToolService;
 import com.axelor.apps.base.service.PartnerService;
 import com.axelor.apps.base.service.PriceListService;
 import com.axelor.apps.base.service.alarm.AlarmEngineService;
+import com.axelor.apps.cash.management.service.InvoiceEstimatedPaymentService;
 import com.axelor.apps.cash.management.service.InvoiceServiceManagementImpl;
 import com.axelor.exception.AxelorException;
 import com.google.inject.Inject;
@@ -32,9 +34,11 @@ public class ExtendedInvoiceServiceImpl extends InvoiceServiceManagementImpl imp
 			final InvoiceRepository invoiceRepo, final AppAccountService appAccountService,
 			final PartnerService partnerService, final InvoiceLineService invoiceLineService,
 			final AccountConfigService accountConfigService, final MoveToolService moveToolService,
-			final PriceListService priceListServiceParam) {
+			final PriceListService priceListServiceParam,
+		      InvoiceLineRepository invoiceLineRepo,
+		      InvoiceEstimatedPaymentService invoiceEstimatedPaymentService) {
 		super(validateFactory, ventilateFactory, cancelFactory, alarmEngineService, invoiceRepo, appAccountService,
-				partnerService, invoiceLineService, accountConfigService, moveToolService);
+				partnerService, invoiceLineService, accountConfigService, moveToolService, invoiceLineRepo, invoiceEstimatedPaymentService);
 		this.priceListService = priceListServiceParam;
 	}
 

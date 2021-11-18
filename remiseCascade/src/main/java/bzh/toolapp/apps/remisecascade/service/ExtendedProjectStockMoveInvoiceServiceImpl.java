@@ -24,6 +24,7 @@ import com.axelor.apps.supplychain.exception.IExceptionMessage;
 import com.axelor.apps.supplychain.service.PurchaseOrderInvoiceService;
 import com.axelor.apps.supplychain.service.SaleOrderInvoiceService;
 import com.axelor.apps.supplychain.service.StockMoveLineServiceSupplychain;
+import com.axelor.apps.supplychain.service.app.AppSupplychainService;
 import com.axelor.apps.supplychain.service.config.SupplyChainConfigService;
 import com.axelor.exception.AxelorException;
 import com.axelor.exception.db.repo.TraceBackRepository;
@@ -41,10 +42,11 @@ public class ExtendedProjectStockMoveInvoiceServiceImpl extends ProjectStockMove
 			final InvoiceRepository invoiceRepository, final SaleOrderRepository saleOrderRepo,
 			final PurchaseOrderRepository purchaseOrderRepo, final StockMoveLineRepository stockMoveLineRepositoryParam,
 			final InvoiceLineRepository invoiceLineRepository,
-			final SupplyChainConfigService supplyChainConfigService) {
+			final SupplyChainConfigService supplyChainConfigService,
+		      AppSupplychainService appSupplychainService) {
 		super(saleOrderInvoiceService, purchaseOrderInvoiceService, stockMoveLineServiceSupplychain, invoiceRepository,
 				saleOrderRepo, purchaseOrderRepo, stockMoveLineRepositoryParam, invoiceLineRepository,
-				supplyChainConfigService);
+				supplyChainConfigService, appSupplychainService);
 		this.stockMoveLineRepository = stockMoveLineRepositoryParam;
 	}
 

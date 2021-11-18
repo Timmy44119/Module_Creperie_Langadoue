@@ -3,6 +3,7 @@ package bzh.toolapp.apps.remisecascade.service;
 import java.math.BigDecimal;
 
 import com.axelor.apps.account.db.InvoiceLine;
+import com.axelor.apps.account.db.repo.InvoiceLineRepository;
 import com.axelor.apps.account.service.AccountManagementAccountService;
 import com.axelor.apps.account.service.AnalyticMoveLineService;
 import com.axelor.apps.account.service.app.AppAccountService;
@@ -10,6 +11,7 @@ import com.axelor.apps.account.service.invoice.InvoiceLineService;
 import com.axelor.apps.base.service.CurrencyService;
 import com.axelor.apps.base.service.PriceListService;
 import com.axelor.apps.base.service.ProductCompanyService;
+import com.axelor.apps.base.service.app.AppBaseService;
 import com.axelor.apps.businessproject.service.InvoiceLineProjectServiceImpl;
 import com.axelor.apps.purchase.service.PurchaseProductService;
 import com.google.inject.Inject;
@@ -21,9 +23,11 @@ public class ExtendedInvoiceLineServiceImpl extends InvoiceLineProjectServiceImp
 			final PriceListService priceListService, final AppAccountService appAccountService,
 			final AnalyticMoveLineService analyticMoveLineService,
 			final AccountManagementAccountService accountManagementAccountService,
-			final PurchaseProductService purchaseProductService, final ProductCompanyService productCompanyService) {
+			final PurchaseProductService purchaseProductService, final ProductCompanyService productCompanyService,
+		      InvoiceLineRepository invoiceLineRepo,
+		      AppBaseService appBaseService) {
 		super(currencyService, priceListService, appAccountService, analyticMoveLineService,
-				accountManagementAccountService, purchaseProductService, productCompanyService);
+				accountManagementAccountService, purchaseProductService, productCompanyService, invoiceLineRepo, appBaseService);
 	}
 
 	@Override
